@@ -13,12 +13,13 @@ There have been a lot of changes to the VR landscape in the last few months.  As
 * Geometry collision
 * Simple grabbing of objects
 
-## Notes
+## Setup
 Initially, this was intended to be an example for the Oculus Quest, but except for some specific Android options, the steps are identical.
 
 What follows are the step-by-step instructions I did to make this project.
 
-***Rift / Rift S changes***
+---
+#### Rift / Rift S changes
 
 * Import `Oculus Integraion 1.38`
 * Accept the updates (Oculus Utilities, Spatializer)
@@ -30,8 +31,8 @@ What follows are the step-by-step instructions I did to make this project.
 		*  Set `Stereo Rendering Mode` to `Single Pass`
 * Close the build settings window.
 
-
-***Quest changes***
+---
+#### Quest changes
 
 * Switch the platform to `Android`
 * Change Texture Compression to `ASTC`
@@ -60,15 +61,16 @@ What follows are the step-by-step instructions I did to make this project.
 * Edit Assets/Android/AndroidManifest.xml
 	* Change `<category android:name="android.intent.category.INFO"/>` to `<category android:name="android.intent.category.LAUNCHER"/>`
 
-		
+---
+#### Scene Setup
 The following steps are the same, regardless of the headset.
 
-* Delete the main camera.
 * Create a Cube at `0,0,0`
 	* Rename the cube to `Floor`
 	* Scale the `Floor` to `10, .001, 10`
-	* Mark it `Static` because it will never move.
+	* Mark it `Static` because it will never move.  This will cause Unity to generate a baked lightmap.
 * Create another cube 
+	* Rename it to `Pillar`
 	* Place it at `0, 0.5, 0`
 	* Scale it to `0.1, 1, 0.1`
 	* Mark it `Static`
@@ -81,15 +83,22 @@ The following steps are the same, regardless of the headset.
 * Set the color of `Red` to `255, 0, 0`
 * Set the color of `Pale Blue` to `0, 239, 255`
 * Drag and drop `Red` on to the `Sphere`
-* Drag and drop `Green` on to the `Cube`
+* Drag and drop `Green` on to the `Pillar`
 * Drag and drop `Pale Blue` on to the `Floor`
 
+## Oculus Integration
 Now that we have the basic scene set up, we can start adding the Oculus things.
 
+---
+#### Set up the Player Controller
+* Delete the main camera.
 * Find the `OVRPlayerController` prefab.  It's easiest to type `ovrplayer` in to the search field.
 	* Drag and drop it in to your hiearchy.
 	* Set the position to `2.5, 1, 0`
 	* Set the rotation to `0, -90, 0`
+
+---
+#### Adding Collision Detection
 * Click on the `OVRPlayerController` in your Hierarchy
 	* In the `Character Controller` section, change the radius to `0.2`
 	* Scroll to the bottom and click `Add Component`
@@ -97,4 +106,13 @@ Now that we have the basic scene set up, we can start adding the Oculus things.
 		* Check `Enable Collision`
 		* Check `Dynamic Height`
 		* In your hierarchy, expand the `OVRPlayerController` and find the `OVRCameraRig`.  Drag and drop it in to the `Camera Rig` field of the `Character Camera Constraints` script.
-	
+
+Now, you cannot walk through the `Pillar`.
+
+---
+#### Adding Hands with LocalAvatar
+*TODO*
+
+---
+#### Making the Sphere Grabbable
+*TODO*
