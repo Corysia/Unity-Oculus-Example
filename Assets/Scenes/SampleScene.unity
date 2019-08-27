@@ -543,6 +543,10 @@ PrefabInstance:
       propertyPath: m_Radius
       value: 0.2
       objectReference: {fileID: 0}
+    - target: {fileID: 11400002, guid: ce816f2e6abb0504092c23ed9b970dfd, type: 3}
+      propertyPath: useRecommendedMSAALevel
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ce816f2e6abb0504092c23ed9b970dfd, type: 3}
 --- !u!1 &1881184998 stripped

@@ -14,7 +14,7 @@ There have been a lot of changes to the VR landscape in the last few months.  As
 * Simple grabbing of objects
 
 ## Setup
-Initially, this was intended to be an example for the Oculus Quest, but except for some specific Android options, the steps are identical.
+Initially, this was intended to be an example for the Oculus Quest, but except for some specific Android options, the steps are identical for the Rift and Rift S.
 
 What follows are the step-by-step instructions I did to make this project.
 
@@ -97,6 +97,10 @@ Now that we have the basic scene set up, we can start adding the Oculus things.
 	* Set the position to `2.5, 1, 0`
 	* Set the rotation to `0, -90, 0`
 
+> ***QUEST ONLY*** 
+>
+>  In your hierarchy, expand the `OVRPlayerController` and find the `OVRCameraRig`.  Locate the `OVRManager` panel and change the value of `Element 0` in `Target Devices` from `GearVR or Go` to `Quest`.  Also, check `Use Recommended MSAA Level`
+
 ---
 #### Adding Collision Detection
 * Click on the `OVRPlayerController` in your Hierarchy
@@ -106,6 +110,7 @@ Now that we have the basic scene set up, we can start adding the Oculus things.
 		* Check `Enable Collision`
 		* Check `Dynamic Height`
 		* In your hierarchy, expand the `OVRPlayerController` and find the `OVRCameraRig`.  Drag and drop it in to the `Camera Rig` field of the `Character Camera Constraints` script.
+
 
 Now, you cannot walk through the `Pillar`.
 
