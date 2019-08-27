@@ -67,4 +67,34 @@ The following steps are the same, regardless of the headset.
 * Create a Cube at `0,0,0`
 	* Rename the cube to `Floor`
 	* Scale the `Floor` to `10, .001, 10`
+	* Mark it `Static` because it will never move.
+* Create another cube 
+	* Place it at `0, 0.5, 0`
+	* Scale it to `0.1, 1, 0.1`
+	* Mark it `Static`
+* Create a Sphere
+	* Place it at `0, 1.05, 0`
+	* Scale it to `0.1, 0.1, 0.1`
+* Create a new folder in `Assets` called `Materials`
+* Create three new `Material`s and name them `Red`, `Green` and `Pale Blue`
+* Set the color of `Green` to `0, 255, 0`
+* Set the color of `Red` to `255, 0, 0`
+* Set the color of `Pale Blue` to `0, 239, 255`
+* Drag and drop `Red` on to the `Sphere`
+* Drag and drop `Green` on to the `Cube`
+* Drag and drop `Pale Blue` on to the `Floor`
+
+Now that we have the basic scene set up, we can start adding the Oculus things.
+
+* Find the `OVRPlayerController` prefab.  It's easiest to type `ovrplayer` in to the search field.
+	* Drag and drop it in to your hiearchy.
+	* Set the position to `2.5, 1, 01
+	* Set the rotation to `0, -90, 01
+* Click on the `OVRPlayerController` in your Hierarchy
+	* In the `Character Controller` section, change the radius to `0.2`
+	* Scroll to the bottom and click `Add Component`
+		* Add a `Character Camera Constraint`
+		* Check `Enable Collision`
+		* Check `Dynamic Height`
+		* In your hierarchy, expand the `OVRPlayerController` and find the `OVRCameraRig`.  Drag and drop it in to the `Camera Rig` field of the `Character Camera Constraints` script.
 	
