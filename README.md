@@ -13,10 +13,14 @@ There have been a lot of changes to the VR landscape in the last few months.  As
 * Geometry collision
 * Simple grabbing of objects
 
-## Setup
-Initially, this was intended to be an example for the Oculus Quest, but except for some specific Android options, the steps are identical for the Rift and Rift S.
+Below I have listed each step I've made to create this project.  This is the recipe I use whenever I start something new.  I'll continue to update this periodically because I am sure that I will be referring back to this often, myself!
 
-What follows are the step-by-step instructions I did to make this project.
+## Project Setup
+Initially, this was intended to be an example for the Oculus Quest, but except for some specific Android options, the instructions are identical for the Rift and Rift S.
+
+What follows is a step-by-step guide to re-create what I've done in this Unity project.
+
+Start with a new Unity 3D Project.  I have not yet been able to get a VR Lightweight RP project to work on the Quest.
 
 ---
 #### Rift / Rift S changes
@@ -62,7 +66,7 @@ What follows are the step-by-step instructions I did to make this project.
 	* Change `<category android:name="android.intent.category.INFO"/>` to `<category android:name="android.intent.category.LAUNCHER"/>`
 
 ---
-#### Scene Setup
+## Scene Setup
 The following steps are the same, regardless of the headset.
 
 * Create a Cube at `0,0,0`
