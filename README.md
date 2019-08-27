@@ -88,8 +88,8 @@ Now that we have the basic scene set up, we can start adding the Oculus things.
 
 * Find the `OVRPlayerController` prefab.  It's easiest to type `ovrplayer` in to the search field.
 	* Drag and drop it in to your hiearchy.
-	* Set the position to `2.5, 1, 01
-	* Set the rotation to `0, -90, 01
+	* Set the position to `2.5, 1, 01`
+	* Set the rotation to `0, -90, 01`
 * Click on the `OVRPlayerController` in your Hierarchy
 	* In the `Character Controller` section, change the radius to `0.2`
 	* Scroll to the bottom and click `Add Component`
