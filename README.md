@@ -6,7 +6,7 @@ An example of how to use Oculus Integration in VR
 * Oculus Integration 1.38 - **DO NOT USE THE VERSION FROM THE UNITY ASSET STORE!**  Download from https://developer.oculus.com/downloads/package/unity-integration-archive/
 
 ## Purpose
-There have been a lot of changes to the VR landscame in the last few months.  As of this writing, there are many tutorials out there today that show how to get started, but each one is slightly out of date.  This project pulls together all the things I know about getting a starter project up and running with:
+There have been a lot of changes to the VR landscape in the last few months.  As of this writing, there are many tutorials out there today that show how to get started, but each one is slightly out of date.  This project pulls together all the things I know about getting a starter project up and running with:
 
 * Animated hands
 * Thumbstick locomotion
@@ -45,8 +45,8 @@ What follows are the step-by-step instructions I did to make this project.
 		*  Set `Stereo Rendering Mode` to `Single Pass`
 	*  Other Settings
 		*  Color space `Linear`
-		*  Remove `Vulkan` from Graphics APIs
-		*  Set a package name.
+		*  Remove `Vulkan` from `Graphics APIs`
+		*  Set a package name.  This can be almost anything you want, but a domain name is the convention.  e.g., `com.example.demo`  It doesn't have to be real at this stage, but should be by the time you intend to publish.
 		*  Set Minimum API level to `Android 7.1 'Nougat' (API level 25)`
 		*  Change API Compatibility Level to `.Net 4.x`
 	* `Quality`
@@ -64,7 +64,7 @@ What follows are the step-by-step instructions I did to make this project.
 The following steps are the same, regardless of the headset.
 
 * Delete the main camera.
-* Create a Cube at 0,0,0
+* Create a Cube at `0,0,0`
 	* Rename the cube to `Floor`
 	* Scale the `Floor` to `10, .001, 10`
 	
