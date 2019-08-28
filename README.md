@@ -1,10 +1,6 @@
 # Unity-Oculus-Example
 An example of how to use Oculus Integration in VR
 
-## Requirements
-* Unity 2019.1.14f1 - This will probably work with other versions, but this is the version I am working with.
-* Oculus Integration 1.38 - **DO NOT USE THE VERSION FROM THE UNITY ASSET STORE!**  Download from https://developer.oculus.com/downloads/package/unity-integration-archive/
-
 ## Purpose
 There have been a lot of changes to the VR landscape in the last few months.  As of this writing, there are many tutorials out there today that show how to get started, but each one is slightly out of date.  This project pulls together all the things I know about getting a starter project up and running with:
 
@@ -18,6 +14,10 @@ Below I have listed each step I've made to create this project.  This is the rec
 Too long to read, you say?  Too much to type?  Just show you the project and binary?  You're not going to get very far in GameDev.  But...you can get the latest build under the [Releases](https://github.com/Corysia/Unity-Oculus-Example/releases) tab.
 
 Having trouble cloning my project and getting it running?  Skip to the bottom and I'll tell you the steps.
+
+## Requirements
+* Unity 2019.1.14f1 - This will probably work with other versions, but this is the version I am working with.
+* Oculus Integration 1.38 - **DO NOT USE THE VERSION FROM THE UNITY ASSET STORE!**  Download from https://developer.oculus.com/downloads/package/unity-integration-archive/ At the top of the page, where the version number is, you'll find a drop-down arrow.  Use that to select the version.
 
 ## Project Setup
 Initially, this was intended to be an example for the Oculus Quest, but except for some specific Android options, the instructions are identical for the Rift and Rift S.
@@ -93,6 +93,9 @@ The following steps are the same, regardless of the headset.
 * Drag and drop `Red` on to the `Sphere`
 * Drag and drop `Green` on to the `Pillar`
 * Drag and drop `Pale Blue` on to the `Floor`
+* Open the Lighting tab
+	* `Window -> General -> Lighthing Settings`
+	* Under `Environment Lighting` change `Ambient Mode` to `Baked`.
 
 ## Oculus Integration
 Now that we have the basic scene set up, we can start adding the Oculus things.
@@ -107,9 +110,20 @@ Now that we have the basic scene set up, we can start adding the Oculus things.
 
 > ***QUEST ONLY*** 
 >
->  In your hierarchy, expand the `OVRPlayerController` and find the `OVRCameraRig`.  Locate the `OVRManager` panel and change the value of `Element 0` in `Target Devices` from `GearVR or Go` to `Quest`.  Also, check `Use Recommended MSAA Level`
+>  In your hierarchy, expand the `OVRPlayerController` and find the `OVRCameraRig`.  
+> Locate the `OVRManager` panel 
+> 
+> 	* 	Change the value of `Element 0` in `Target Devices` from `GearVR or Go` to `Quest`.  
+> 	*	Check `Use Recommended MSAA Level`
+>  * 	Change `Tracking` to `Floor Level`
+>  *	Ensure all of the following are checked:
+> 		*	`Use Position Tracking`
+> 		*	`Use IPD in Position Tracking`
+> 		* 	`Reset Tracker On Load`
+> 		*	`Allow Recenter`
+> 		* 	`Reorient HMD on Controller Recenter`
 
-At this point, you should be able to build and run.  You should be able to:
+At this point, build and run your project.  You should be able to:
 
 * Smoothly move with the left thumbstick.
 * Turn with the right thumbstick.
@@ -129,11 +143,20 @@ At this point, you should be able to build and run.  You should be able to:
 		* In your hierarchy, expand the `OVRPlayerController` and find the `OVRCameraRig`.  Drag and drop it in to the `Camera Rig` field of the `Character Camera Constraints` script.
 
 
-Now, you cannot walk through the `Pillar`.
+Build and run.  Now, you should not be able to walk through the `Pillar`.
 
 ---
 #### Adding Hands with LocalAvatar
-*TODO*
+I was hoping to be able to use the `LocalAvatarWithGrab` prefab, but the hands simply do not track correctly for me.  As a result, it's neccessary to modify the prefab for the `OVRPlayerController`.
+
+* In your Heirarchy, expand your `OVRPlayerController` out until you can see the `TrackingSpace` underneath the `OVRCamperaRig`.  
+* In your Assets folder, find the `LocalAvatar` prefab.
+* Drag and drop `LocalAvatar` on top of the `TrackingSpace`.  Do not place it underneath it.  If you get a pop-up about modifying the prefab, you've done it wrong.  `TrackingSpace` should expand and you should see a `+LocalAvatar` at the bottom of its list.
+* Find the `Ovr Avatar (Script)` entry in `+LocalAvatar`
+	* Un-check `Show Third Person`
+	* Optionally, un-check `Can Own Microphone` because we won't be using the mic in this tutorial.
+
+That's it!  Build and run.  You should have animated hands.
 
 ---
 #### Making the Sphere Grabbable
