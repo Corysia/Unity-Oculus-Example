@@ -15,6 +15,10 @@ There have been a lot of changes to the VR landscape in the last few months.  As
 
 Below I have listed each step I've made to create this project.  This is the recipe I use whenever I start something new.  I'll continue to update this periodically because I am sure that I will be referring back to this often, myself!
 
+Too long to read, you say?  Too much to type?  Just show you the project and binary?  You're not going to get very far in GameDev.  But...you can get the latest build under the [Releases](https://github.com/Corysia/Unity-Oculus-Example/releases) tab.
+
+Having trouble cloning my project and getting it running?  Skip to the bottom and I'll tell you the steps.
+
 ## Project Setup
 Initially, this was intended to be an example for the Oculus Quest, but except for some specific Android options, the instructions are identical for the Rift and Rift S.
 
@@ -63,7 +67,7 @@ Start with a new Unity 3D Project.  I have not yet been able to get a VR Lightwe
 * Oculus -> Tools -> Remove AndroidManifest.xml
 * Oculus -> Tools -> Create store-compatible AndroidManifest.xml
 * Edit Assets/Android/AndroidManifest.xml
-	* Change `<category android:name="android.intent.category.INFO"/>` to `<category android:name="android.intent.category.LAUNCHER"/>`
+	* Change `<category android:name="android.intent.category.INFO"/>` to `<category android:name="android.intent.category.LAUNCHER"/>`. This step isn't necessary, but it gets rid of that 'boop' noise, removes some error messages, and auto-launches your app when you choose `build and deploy`.
 
 ---
 ## Scene Setup
@@ -105,6 +109,15 @@ Now that we have the basic scene set up, we can start adding the Oculus things.
 >
 >  In your hierarchy, expand the `OVRPlayerController` and find the `OVRCameraRig`.  Locate the `OVRManager` panel and change the value of `Element 0` in `Target Devices` from `GearVR or Go` to `Quest`.  Also, check `Use Recommended MSAA Level`
 
+At this point, you should be able to build and run.  You should be able to:
+
+* Smoothly move with the left thumbstick.
+* Turn with the right thumbstick.
+
+> ***QUEST ONLY*** 
+> 
+> If you can't move or you just take a small step forward, check your AndroidManifest.xml file.  You may need to regenerate it.
+
 ---
 #### Adding Collision Detection
 * Click on the `OVRPlayerController` in your Hierarchy
@@ -125,3 +138,17 @@ Now, you cannot walk through the `Pillar`.
 ---
 #### Making the Sphere Grabbable
 *TODO*
+
+## Building from this Source
+* Checkout the project to your local system.
+* Open it in Unity -- the same version of Unity I said at the beginning.
+* Download and import the right version of Oculus Integration.
+* Go through the upgrades Oculus will ask for.
+* Shut down Unity.
+* On the command line, type: `git reset --hard`.  If you don't know how to use the command line, there are other tutorials.
+* Re-open the project in Unity
+* Open up `Scenes/SampleScene` by double-clicking on it. 
+* That's it.  You should be set to build a Rift / Rift S app.  If you're wanting to make a Quest app, you'll have to go in to the build settings and switch the platform to Android.  ...and then wait while Oculus Integration re-imports.  Even worse, texture compression is probably not set right.  Ah...the joys of being a Quest developer!  Also, ensure that the `OVRManager` is still set to `Quest`.  Oh, you also need to Remove and re-add the AndroidManifest.  And then change it to LAUNCHER.  
+
+I'm going to have to clean this section up...
+
