@@ -66,7 +66,7 @@ Start with a new Unity 3D Project.  I have not yet been able to get a VR Lightwe
 * Close the build settings window.
 * Oculus -> Tools -> Remove AndroidManifest.xml
 * Oculus -> Tools -> Create store-compatible AndroidManifest.xml
-* Edit Assets/Android/AndroidManifest.xml
+* Edit `Assets/Plugins/Android/AndroidManifest.xml`
 	* Change `<category android:name="android.intent.category.INFO"/>` to `<category android:name="android.intent.category.LAUNCHER"/>`. This step isn't necessary, but it gets rid of that 'boop' noise, removes some error messages, and auto-launches your app when you choose `build and deploy`.
 
 ---
@@ -152,7 +152,7 @@ I was hoping to be able to use the `LocalAvatarWithGrab` prefab, but the hands s
 * In your Heirarchy, expand your `OVRPlayerController` out until you can see the `TrackingSpace` underneath the `OVRCamperaRig`.  
 * In your Assets folder, find the `LocalAvatar` prefab.
 * Drag and drop `LocalAvatar` on top of the `TrackingSpace`.  Do not place it underneath it.  If you get a pop-up about modifying the prefab, you've done it wrong.  `TrackingSpace` should expand and you should see a `+LocalAvatar` at the bottom of its list.
-* Find the `Ovr Avatar (Script)` entry in `+LocalAvatar`
+* Find the `Ovr Avatar (Script)` component within `+LocalAvatar`
 	* Un-check `Show Third Person`
 	* Optionally, un-check `Can Own Microphone` because we won't be using the mic in this tutorial.
 
@@ -160,7 +160,37 @@ That's it!  Build and run.  You should have animated hands.
 
 ---
 #### Making the Sphere Grabbable
-*TODO*
+* Find your `Sphere` in your hierarchy
+	* Add a `Rigidbody` component
+	* Add an `OVRGrabbable` component
+* Find `LeftHandAnchor` and `RightHandAnchor` under the `OVRPlayerController` in your heirarchy.
+	* Select them both and add a `Sphere Collider`
+		* Set the radius to `0.05`
+		* Check the `Is Trigger` box
+	* Add an `OVR Grabber` script to both
+* Expand the `RightHandAnchor` and find the `RightControllerAnchor` under it.
+	*  On the `RightHandAnchor`, drag and drop the `RightControllerAnchor` to the `Grip Transform` field
+	*  Under `Grip Volumes` on the `RightHandAnchor`
+		*  Set the size to `1`
+		*  Drag the `Sphere Collider` of the `RightHandAnchor` in to this field.
+* Do the same thing for the `LeftHandController`.
+
+When you start up your project now, you should be able to pick up the sphere.
+
+
+#### Colliding with Grabbed Objects
+You may or may not have noticed that if you pick up the grabbed object and hug it to yourself, or place it under you, you'll be pushed around in the world.  To fix this, we need to adjust the collision matrix.
+
+* Create a new layer called `Player`
+* Create a new layer called `Grabbable`
+* Under `Player Settings`, go to the `Physics` tab.
+	* Scroll to the bottom of the panel until you see the matrix
+	* Uncheck the intersection of `Player` and `Grabbable`
+
+By doing this, these two layers won't trigger a collision event.
+
+* Set the layer of the `Sphere` in your hierarchy as `Grabbable`
+* Set the layer of the `OVRPlayerController` as `Player`. Do not recursively mark all child objects.  We only want the top object to be on the `Player` layer.
 
 ## Building from this Source
 * Checkout the project to your local system.
