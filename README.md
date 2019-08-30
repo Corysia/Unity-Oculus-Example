@@ -173,7 +173,8 @@ That's it!  Build and run.  You should have animated hands.
 	*  Under `Grip Volumes` on the `RightHandAnchor`
 		*  Set the size to `1`
 		*  Drag the `Sphere Collider` of the `RightHandAnchor` in to this field.
-* Do the same thing for the `LeftHandController`.
+	* In the `Controller` dropdown, select `R Touch`
+* Do the same thing for the `LeftHandController` for the left hand.
 
 When you start up your project now, you should be able to pick up the sphere.
 
