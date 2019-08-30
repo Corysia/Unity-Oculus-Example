@@ -5,15 +5,12 @@ using UnityEngine;
 
 public class SnapBack : MonoBehaviour
 {
-    [SerializeField]
-    private Vector3 initialPosition;
-    [SerializeField]
-    private Quaternion initialRotation;
-    [SerializeField]
-    private Transform initialParent;
+    [SerializeField] private Vector3 initialPosition;
+    [SerializeField] private Quaternion initialRotation;
+    [SerializeField] private Transform initialParent;
 
     private Rigidbody _rigidbody;
-    
+
     private void Awake()
     {
         initialPosition = transform.position;
@@ -25,13 +22,22 @@ public class SnapBack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float distance = Vector3.Distance(transform.position, initialPosition);
-        if (Vector3.Distance(transform.position, initialPosition) > 5.0f)
-        {
-            transform.SetPositionAndRotation(initialPosition, initialRotation);
-            transform.parent.SetParent(initialParent);
-            _rigidbody.velocity = Vector3.zero;
-            _rigidbody.Sleep();
-        }
+        if (TooFarAway())
+            RestorePosition();
+    }
+
+    private bool TooFarAway()
+    {
+        return Vector3.Distance(transform.position, initialPosition) > 0.5;
+    }
+
+    private void RestorePosition()
+    {
+        Debug.Log("Resetting position");
+        transform.SetPositionAndRotation(initialPosition, initialRotation);
+        transform.parent = initialParent;
+        _rigidbody.velocity = Vector3.zero;
+        _rigidbody.angularVelocity = Vector3.zero;
+        _rigidbody.Sleep();
     }
 }
