@@ -1,5 +1,5 @@
 # Unity-Oculus-Example
-An example of how to use Oculus Integration in VR
+An example of how to use Oculus Integration 1.40 in Unity
 
 ## Purpose
 There have been a lot of changes to the VR landscape in the last few months.  As of this writing, there are many tutorials out there today that show how to get started, but each one is slightly out of date.  This project pulls together all the things I know about getting a starter project up and running with:
@@ -13,7 +13,7 @@ Below I have listed each step I've made to create this project.  This is the rec
 
 ## Requirements
 * Unity 2019.1.14f1 - This will probably work with other versions, but this is the version I am working with.
-* Oculus Integration 1.40 -Verify this is the version you're getting from the Asset Store.  If there is a newer one out, these instructions may not work.  You can find older versions at  https://developer.oculus.com/downloads/package/unity-integration-archive/ At the top of the page, where the version number is, you'll find a drop-down arrow.  Use that to select the version.
+* Oculus Integration 1.40 - **Verify this is the version you're getting from the Asset Store.**   If there is a newer one out, these instructions may not work.  You can find older versions at the [Oculus Unity Integration Archive](https://developer.oculus.com/downloads/package/unity-integration-archive/"Title").  At the top of the page, where the version number is, you'll find a drop-down arrow.  Use that to select the version.
 
 ## Project Setup
 Initially, this was intended to be an example for the Oculus Quest, but except for some specific Android options, the instructions are identical for the Rift and Rift S.
@@ -93,7 +93,7 @@ The following steps are the same, regardless of the headset.
 Now that we have the basic scene set up, we can start adding the Oculus things.
 
 ---
-#### Set up the Player Controller
+### Set up the Player Controller
 * Delete the main camera.
 * Find the `OVRPlayerController` prefab.  It's easiest to type `ovrplayer` in to the search field.
 	* Drag and drop it in to your hiearchy.
@@ -121,7 +121,7 @@ At this point, build and run your project.  You should be able to:
 * Turn with the right thumbstick.
 
 ---
-#### Adding Collision Detection
+### Adding Collision Detection
 * Click on the `OVRPlayerController` in your Hierarchy
 	* In the `Character Controller` section, change the radius to `0.2`
 	* Scroll to the bottom and click `Add Component`
@@ -134,7 +134,7 @@ At this point, build and run your project.  You should be able to:
 Build and run.  Now, you should not be able to walk through the `Pillar`.
 
 ---
-#### Adding Hands with LocalAvatar
+### Adding Hands with LocalAvatar
 I was hoping to be able to use the `LocalAvatarWithGrab` prefab, but the hands simply do not track correctly for me.  As a result, it's neccessary to modify the prefab for the `OVRPlayerController`.
 
 * In your Heirarchy, expand your `OVRPlayerController` out until you can see the `TrackingSpace` underneath the `OVRCamperaRig`.  
@@ -147,7 +147,7 @@ I was hoping to be able to use the `LocalAvatarWithGrab` prefab, but the hands s
 That's it!  Build and run.  You should have animated hands.
 
 ---
-#### Making the Sphere Grabbable
+### Making the Sphere Grabbable
 * Find your `Sphere` in your hierarchy
 	* Add a `Rigidbody` component
 	* Add an `OVRGrabbable` component
@@ -166,8 +166,8 @@ That's it!  Build and run.  You should have animated hands.
 
 When you start up your project now, you should be able to pick up the sphere.
 
-
-#### Colliding with Grabbed Objects
+---
+### Colliding with Grabbed Objects
 You may or may not have noticed that if you pick up the grabbed object and hug it to yourself, or place it under you, you'll be pushed around in the world.  To fix this, we need to adjust the collision matrix.
 
 * Create a new layer called `Player`
@@ -181,16 +181,4 @@ By doing this, these two layers won't trigger a collision event.
 * Set the layer of the `Sphere` in your hierarchy as `Grabbable`
 * Set the layer of the `OVRPlayerController` as `Player`. Do not recursively mark all child objects.  We only want the top object to be on the `Player` layer.
 
-## Building from this Source
-* Checkout the project to your local system.
-* Open it in Unity -- the same version of Unity I said at the beginning.
-* Download and import the right version of Oculus Integration.
-* Go through the upgrades Oculus will ask for.
-* Shut down Unity.
-* On the command line, type: `git reset --hard`.  If you don't know how to use the command line, there are other tutorials.
-* Re-open the project in Unity
-* Open up `Scenes/SampleScene` by double-clicking on it. 
-* That's it.  You should be set to build a Rift / Rift S app.  If you're wanting to make a Quest app, you'll have to go in to the build settings and switch the platform to Android.  ...and then wait while Oculus Integration re-imports.  Even worse, texture compression is probably not set right.  Ah...the joys of being a Quest developer!  Also, ensure that the `OVRManager` is still set to `Quest`.  Oh, you also need to Remove and re-add the AndroidManifest.  And then change it to LAUNCHER.  
-
-I'm going to have to clean this section up...
 
