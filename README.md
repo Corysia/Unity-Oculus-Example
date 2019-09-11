@@ -11,13 +11,9 @@ There have been a lot of changes to the VR landscape in the last few months.  As
 
 Below I have listed each step I've made to create this project.  This is the recipe I use whenever I start something new.  I'll continue to update this periodically because I am sure that I will be referring back to this often, myself!
 
-Too long to read, you say?  Too much to type?  Just show you the project and binary?  You're not going to get very far in GameDev.  But...you can get the latest build under the [Releases](https://github.com/Corysia/Unity-Oculus-Example/releases) tab.
-
-Having trouble cloning my project and getting it running?  Skip to the bottom and I'll tell you the steps.
-
 ## Requirements
 * Unity 2019.1.14f1 - This will probably work with other versions, but this is the version I am working with.
-* Oculus Integration 1.38 - **DO NOT USE THE VERSION FROM THE UNITY ASSET STORE!**  Download from https://developer.oculus.com/downloads/package/unity-integration-archive/ At the top of the page, where the version number is, you'll find a drop-down arrow.  Use that to select the version.
+* Oculus Integration 1.40 -Verify this is the version you're getting from the Asset Store.  If there is a newer one out, these instructions may not work.  You can find older versions at  https://developer.oculus.com/downloads/package/unity-integration-archive/ At the top of the page, where the version number is, you'll find a drop-down arrow.  Use that to select the version.
 
 ## Project Setup
 Initially, this was intended to be an example for the Oculus Quest, but except for some specific Android options, the instructions are identical for the Rift and Rift S.
@@ -29,7 +25,7 @@ Start with a new Unity 3D Project.  I have not yet been able to get a VR Lightwe
 ---
 #### Rift / Rift S changes
 
-* Import `Oculus Integraion 1.38`
+* Import `Oculus Integraion 1.40`
 * Accept the updates (Oculus Utilities, Spatializer)
 * `File -> Build Settings -> Player Settings`
 	* 	Click `Add Open Scenes` to add `Scenes/SampleScene`
@@ -44,7 +40,7 @@ Start with a new Unity 3D Project.  I have not yet been able to get a VR Lightwe
 
 * Switch the platform to `Android`
 * Change Texture Compression to `ASTC`
-* Import `Oculus Integraion 1.38`
+* Import `Oculus Integraion 1.40`
 * Accept the updates (Oculus Utilities, Spatializer)
 * `File -> Build Settings -> Player Settings`
 	* 	Click `Add Open Scenes` to add `Scenes/SampleScene`
@@ -64,10 +60,6 @@ Start with a new Unity 3D Project.  I have not yet been able to get a VR Lightwe
 		* `Medium tier` - uncheck `Use Defaults` and select `Low`.
 		* `High tier` - uncheck `Use Defaults` and select `Low`.
 * Close the build settings window.
-* Oculus -> Tools -> Remove AndroidManifest.xml
-* Oculus -> Tools -> Create store-compatible AndroidManifest.xml
-* Edit `Assets/Plugins/Android/AndroidManifest.xml`
-	* Change `<category android:name="android.intent.category.INFO"/>` to `<category android:name="android.intent.category.LAUNCHER"/>`. This step isn't necessary, but it gets rid of that 'boop' noise, removes some error messages, and auto-launches your app when you choose `build and deploy`.
 
 ---
 ## Scene Setup
@@ -127,10 +119,6 @@ At this point, build and run your project.  You should be able to:
 
 * Smoothly move with the left thumbstick.
 * Turn with the right thumbstick.
-
-> ***QUEST ONLY*** 
-> 
-> If you can't move or you just take a small step forward, check your AndroidManifest.xml file.  You may need to regenerate it.
 
 ---
 #### Adding Collision Detection
