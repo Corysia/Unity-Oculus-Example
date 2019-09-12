@@ -7,6 +7,11 @@
 Assets/AssetStoreTools*
 [Aa]ssets/[Oo]culus
 
+# Ignore these Oculus files because they store your secret App ID
+Assets/Resources/OvrAvatarSettings.asset
+Assets/Resources/OculusPlatformSettings.asset
+Assets/Resources/OculusPlatformSettings.asset.meta
+
 # Visual Studio cache directory
 .vs/
 
