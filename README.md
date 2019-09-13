@@ -106,7 +106,7 @@ Now that we have the basic scene set up, we can start adding the Oculus things.
 > Locate the `OVRManager` panel 
 > 
 > 	* 	Change the value of `Element 0` in `Target Devices` from `GearVR or Go` to `Quest`.  
-> 	*	Check `Use Recommended MSAA Level`
+> 	*	Ensure `Use Recommended MSAA Level` is checked.
 >  * 	Change `Tracking` to `Floor Level`
 >  *	Ensure all of the following are checked:
 > 		*	`Use Position Tracking`
@@ -137,6 +137,16 @@ Build and run.  Now, you should not be able to walk through the `Pillar`.
 ### Adding Hands with LocalAvatar
 I was hoping to be able to use the `LocalAvatarWithGrab` prefab, but the hands simply do not track correctly for me.  As a result, it's neccessary to modify the prefab for the `OVRPlayerController`.
 
+As of Oculus Integration 1.39, it is necessary to have an App ID for your project in order to display your Oculus Avatar.  You can register your app with Oculus at https://dashboard.oculus.com/  Once you have an App ID for your project, you register it under the Oculus menu in `Oculus -> Avatars -> Edit Settings` and `Oculus -> Platform -> Edit Settings`
+
+This will then create three files:
+
+* Assets/Resources/OvrAvatarSettings.asset
+* Assets/Resources/OculusPlatformSettings.asset
+* Assets/Resources/OculusPlatformSettings.asset.meta
+
+The first two files will contain your App's ID, so take that in to consideration if you add your project to Source Control.  These should not be public!  I chose to add them to my `.gitignore` file.
+
 * In your Heirarchy, expand your `OVRPlayerController` out until you can see the `TrackingSpace` underneath the `OVRCamperaRig`.  
 * In your Assets folder, find the `LocalAvatar` prefab.
 * Drag and drop `LocalAvatar` on top of the `TrackingSpace`.  Do not place it underneath it.  If you get a pop-up about modifying the prefab, you've done it wrong.  `TrackingSpace` should expand and you should see a `+LocalAvatar` at the bottom of its list.
@@ -151,6 +161,10 @@ That's it!  Build and run.  You should have animated hands.
 * Find your `Sphere` in your hierarchy
 	* Add a `Rigidbody` component
 	* Add an `OVRGrabbable` component
+
+That's it for the sphere.  You can do this now with any other object you'd like to pick up (that isn't marked static).
+
+### Allow Your Hands to Grab	
 * Find `LeftHandAnchor` and `RightHandAnchor` under the `OVRPlayerController` in your heirarchy.
 	* Select them both and add a `Sphere Collider`
 		* Set the radius to `0.05`
