@@ -137,7 +137,10 @@ Build and run.  Now, you should not be able to walk through the `Pillar`.
 ### Adding Hands with LocalAvatar
 I was hoping to be able to use the `LocalAvatarWithGrab` prefab, but the hands simply do not track correctly for me.  As a result, it's neccessary to modify the prefab for the `OVRPlayerController`.
 
-As of Oculus Integration 1.39, it is necessary to have an App ID for your project in order to display your Oculus Avatar.  You can register your app with Oculus at https://dashboard.oculus.com/  Once you have an App ID for your project, you register it under the Oculus menu in `Oculus -> Avatars -> Edit Settings` and `Oculus -> Platform -> Edit Settings`
+As of Oculus Integration 1.39, it is necessary to have an App ID[^AppID] for your project in order to display your Oculus Avatar.  You can register your app with Oculus on [your Oculus Dashboard](https://dashboard.oculus.com).  Once you have an App ID for your project, you register it under the Oculus menu in `Oculus -> Avatars -> Edit Settings` and `Oculus -> Platform -> Edit Settings`
+
+[^AppID]: You don't have to make a real project you intend to publish.  I've registered a `QuestTest` application to get an ID to experiment with.  Once I'm at the point of making a real app, I'll get a unique one for it.
+
 
 This will then create three files:
 
@@ -194,5 +197,4 @@ By doing this, these two layers won't trigger a collision event.
 
 * Set the layer of the `Sphere` in your hierarchy as `Grabbable`
 * Set the layer of the `OVRPlayerController` as `Player`. Do not recursively mark all child objects.  We only want the top object to be on the `Player` layer.
-
 
