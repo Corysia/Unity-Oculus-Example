@@ -137,12 +137,12 @@ Build and run.  Now, you should not be able to walk through the `Pillar`.
 ### Adding Hands with LocalAvatar
 I was hoping to be able to use the `LocalAvatarWithGrab` prefab, but the hands simply do not track correctly for me.  As a result, it's neccessary to modify the prefab for the `OVRPlayerController`.
 
-As of Oculus Integration 1.39, it is necessary to have an App ID[^AppID] for your project in order to display your Oculus Avatar.  You can register your app with Oculus on [your Oculus Dashboard](https://dashboard.oculus.com).  Once you have an App ID for your project, you register it under the Oculus menu in `Oculus -> Avatars -> Edit Settings` and `Oculus -> Platform -> Edit Settings`
+As of Oculus Integration 1.39, it is necessary to have an App ID for your project in order to display your Oculus Avatar.  You can register your app with Oculus on [your Oculus Dashboard](https://dashboard.oculus.com).  Once you have an App ID for your project, you register it under the Oculus menu in `Oculus -> Avatars -> Edit Settings` and `Oculus -> Platform -> Edit Settings`
 
-[^AppID]: You don't have to make a real project you intend to publish.  I've registered a `QuestTest` application to get an ID to experiment with.  Once I'm at the point of making a real app, I'll get a unique one for it.
+You don't have to make a real project you intend to publish.  I've registered a `QuestTest` application to get an ID to experiment with.  Once I'm at the point of making a real app, I'll get a unique one for it.  You can also enter a bogus number in like `12345` if you're in a hurry, but you shouldn't.  That trick could go away at any point.
 
 
-This will then create three files:
+Adding the AppID will create three files:
 
 * Assets/Resources/OvrAvatarSettings.asset
 * Assets/Resources/OculusPlatformSettings.asset
@@ -154,7 +154,7 @@ The first two files will contain your App's ID, so take that in to consideration
 * In your Assets folder, find the `LocalAvatar` prefab.
 * Drag and drop `LocalAvatar` on top of the `TrackingSpace`.  Do not place it underneath it.  If you get a pop-up about modifying the prefab, you've done it wrong.  `TrackingSpace` should expand and you should see a `+LocalAvatar` at the bottom of its list.
 * Find the `Ovr Avatar (Script)` component within `+LocalAvatar`
-	* Un-check `Show Third Person`
+	* Ensure that `Show Third Person` is not checked.
 	* Optionally, un-check `Can Own Microphone` because we won't be using the mic in this tutorial.
 
 That's it!  Build and run.  You should have animated hands.
@@ -165,7 +165,7 @@ That's it!  Build and run.  You should have animated hands.
 	* Add a `Rigidbody` component
 	* Add an `OVRGrabbable` component
 
-That's it for the sphere.  You can do this now with any other object you'd like to pick up (that isn't marked static).
+That's it for the sphere.
 
 ### Allow Your Hands to Grab	
 * Find `LeftHandAnchor` and `RightHandAnchor` under the `OVRPlayerController` in your heirarchy.
@@ -173,6 +173,7 @@ That's it for the sphere.  You can do this now with any other object you'd like 
 		* Set the radius to `0.05`
 		* Check the `Is Trigger` box
 	* Add an `OVR Grabber` script to both
+	* Check `Parent Held Object` or you will see some jumpiness when holding and object and moving your hands.
 * Expand the `RightHandAnchor` and find the `RightControllerAnchor` under it.
 	*  On the `RightHandAnchor`, drag and drop the `RightControllerAnchor` to the `Grip Transform` field
 	*  Under `Grip Volumes` on the `RightHandAnchor`
