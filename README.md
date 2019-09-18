@@ -5,7 +5,7 @@ An example of how to use Oculus Integration 1.40 in Unity
 There have been a lot of changes to the VR landscape in the last few months.  As of this writing, there are many tutorials out there today that show how to get started, but each one is slightly out of date.  This project pulls together all the things I know about getting a starter project up and running with:
 
 * Animated hands
-* Thumbstick locomotion
+* Thumb-stick locomotion
 * Geometry collision
 * Simple grabbing of objects
 
@@ -40,7 +40,7 @@ Start with a new Unity 3D Project.  I have not yet been able to get a VR Lightwe
 
 * Switch the platform to `Android`
 * Change Texture Compression to `ASTC`
-* Import `Oculus Integraion 1.40`
+* Import `Oculus Integration 1.40`
 * Accept the updates (Oculus Utilities, Spatializer)
 * `File -> Build Settings -> Player Settings`
 	* 	Click `Add Open Scenes` to add `Scenes/SampleScene`
@@ -86,7 +86,7 @@ The following steps are the same, regardless of the headset.
 * Drag and drop `Green` on to the `Pillar`
 * Drag and drop `Pale Blue` on to the `Floor`
 * Open the Lighting tab
-	* `Window -> General -> Lighthing Settings`
+	* `Window -> General -> Lighting Settings`
 	* Under `Environment Lighting` change `Ambient Mode` to `Baked`.
 
 ## Oculus Integration
@@ -96,7 +96,7 @@ Now that we have the basic scene set up, we can start adding the Oculus things.
 ### Set up the Player Controller
 * Delete the main camera.
 * Find the `OVRPlayerController` prefab.  It's easiest to type `ovrplayer` in to the search field.
-	* Drag and drop it in to your hiearchy.
+	* Drag and drop it in to your hierarchy.
 	* Set the position to `2.5, 1, 0`
 	* Set the rotation to `0, -90, 0`
 
@@ -117,8 +117,8 @@ Now that we have the basic scene set up, we can start adding the Oculus things.
 
 At this point, build and run your project.  You should be able to:
 
-* Smoothly move with the left thumbstick.
-* Turn with the right thumbstick.
+* Smoothly move with the left thumb-stick.
+* Turn with the right thumb-stick.
 
 ---
 ### Adding Collision Detection
@@ -150,7 +150,7 @@ Adding the AppID will create three files:
 
 The first two files will contain your App's ID, so take that in to consideration if you add your project to Source Control.  These should not be public!  I chose to add them to my `.gitignore` file.
 
-* In your Heirarchy, expand your `OVRPlayerController` out until you can see the `TrackingSpace` underneath the `OVRCamperaRig`.  
+* In your Hierarchy, expand your `OVRPlayerController` out until you can see the `TrackingSpace` underneath the `OVRCameraRig`.  
 * In your Assets folder, find the `LocalAvatar` prefab.
 * Drag and drop `LocalAvatar` on top of the `TrackingSpace`.  Do not place it underneath it.  If you get a pop-up about modifying the prefab, you've done it wrong.  `TrackingSpace` should expand and you should see a `+LocalAvatar` at the bottom of its list.
 * Find the `Ovr Avatar (Script)` component within `+LocalAvatar`
@@ -168,7 +168,7 @@ That's it!  Build and run.  You should have animated hands.
 That's it for the sphere.
 
 ### Allow Your Hands to Grab	
-* Find `LeftHandAnchor` and `RightHandAnchor` under the `OVRPlayerController` in your heirarchy.
+* Find `LeftHandAnchor` and `RightHandAnchor` under the `OVRPlayerController` in your hierarchy.
 	* Select them both and add a `Sphere Collider`
 		* Set the radius to `0.05`
 		* Check the `Is Trigger` box
