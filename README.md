@@ -176,7 +176,7 @@ That's it for the sphere.
 	* Check `Parent Held Object` or you will see some jumpiness when holding and object and moving your hands.
 * Expand the `RightHandAnchor` and find the `RightControllerAnchor` under it.
 	*  On the `RightHandAnchor`, drag and drop the `RightControllerAnchor` to the `Grip Transform` field
-	*  Under `Grip Volumes` on the `RightHandAnchor`
+	*  Under `Grab Volumes` on the `RightHandAnchor`
 		*  Set the size to `1`
 		*  Drag the `Sphere Collider` of the `RightHandAnchor` in to this field.
 	* In the `Controller` dropdown, select `R Touch`
