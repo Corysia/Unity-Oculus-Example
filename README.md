@@ -156,6 +156,8 @@ The first two files will contain your App's ID, so take that in to consideration
 * Find the `Ovr Avatar (Script)` component within `+LocalAvatar`
 	* Ensure that `Show Third Person` is not checked.
 	* Optionally, un-check `Can Own Microphone` because we won't be using the mic in this tutorial.
+	
+* Create a manifest file, without it hands do not seem to work: Oculus -> Tools -> Create store-compatible AndroidManifest.xml
 
 That's it!  Build and run.  You should have animated hands.
 
